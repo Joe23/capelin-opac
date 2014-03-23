@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>capelin-opac.org</taglib-uri>
+			<taglib-location>/WEB-INF/tags/capelin.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<listener>
+		    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>		
+	</listener>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/conf/capelin-spring-context.xml</param-value>
+	</context-param>
+		
+	<servlet>
+		<servlet-name>capelin-context</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/conf/capelin-spring-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	<servlet-mapping>
+		<servlet-name>capelin-context</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>capelin-context</servlet-name>
+		<url-pattern>*.cat</url-pattern>
+	</servlet-mapping>
+
+	<!-- Kaptcha -->
+	<servlet>
+		<servlet-name>Kaptcha</servlet-name>
+		<servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+
+		<init-param>
+			<param-name>kaptcha.border</param-name>
+			<param-value>no</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>kaptcha.textproducer.font.color</param-name>
+			<param-value>black</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>kaptcha.textproducer.char.space</param-name>
+			<param-value>5</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Kaptcha</servlet-name>
+		<url-pattern>/Kaptcha.jpg</url-pattern>
+	</servlet-mapping>
+<!--  End Kaptcha -->
+
+	<!--  DWR	-->	 
+	<servlet>
+	<servlet-name>ajax</servlet-name>
+	<servlet-class>org.directwebremoting.spring.DwrSpringServlet</servlet-class>
+	 <!--  IF GET ERROR IN TOMCAT 7 
+	<init-param>
+		<param-name>crossDomainSessionSecurity</param-name>  
+		<param-value>false</param-value>  
+	</init-param>	  
+	-->
+	</servlet>
+
+	<servlet-mapping>
+	  <servlet-name>ajax</servlet-name>
+	  <url-pattern>/ajax/*</url-pattern>
+	</servlet-mapping>
+	<!--  END OF DWR -->
+		
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

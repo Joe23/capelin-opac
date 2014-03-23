@@ -1,0 +1,56 @@
+/** 
+ * Capelin-OPAC
+ * https://github.com/Joe23/capelin-opac
+ * License: GNU AGPL v3 | http://www.gnu.org/licenses/agpl.html 
+ *
+ * @author Jing Xiao <jing.xiao.ca at gmail dot com>
+ */
+
+/*
+ * Blue
+ * #ccf #6c8cd5 #4671d5 #1240ab #06266f
+ */
+
+/* for top/bottom banner bar*/
+
+a{
+	color: #1240ab;
+}
+a:hover{
+	color: #6c8cd5;
+}
+#capelin-top-menu,#capelin-footer{
+	background-color: #1240ab;
+	color: #fff;
+}
+#capelin-top-menu a,#capelin-footer a{	
+	color:#ccf;
+}
+#capelin-top-menu a:hover,#capelin-footer a:hover{
+	color: #fff;
+}
+
+/* for content menu*/
+#capelin-content-menu a {
+	color: #fff;
+	background-color: #1240ab;
+}
+
+#capelin-content-menu a:hover {
+	background-color: #6c8cd5;
+}
+
+body{
+	color: #06266f;
+}
+
+span.color-medium{
+	color: #4671d5;
+}
+span.color-light{
+	color: #6c8cd5;
+}
+
+div.capelin-simple-form, div.capelin-advanced-form{
+	background-color: #ccf;
+}

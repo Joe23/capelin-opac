@@ -1,0 +1,45 @@
+<!-- 
+ * Use ant to build all applicaiton.
+ * Author: Jing Xiao <jing.xiao.ca@gmail.com>
+-->
+<project basedir="." default="all" name="capelin-opac-test">
+	<import file="build.xml" />
+	<property name="junit.output.dir" value="../junit-report" />
+	
+    <path id="capelin-test.classpath">
+    	<pathelement location="capelin-mvc/WebContent/"/>
+        <pathelement location="${classes-dir}/capelin-mvc"/>    	
+        <path refid="capelin-ext.libraryclasspath"/>
+    	<pathelement location="capelin-mvc/WebContent/WEB-INF/classes/"/>    	
+    </path>
+	
+    <target name="tx" depends="build-tx"  description="Test capelin-transaction">
+        <mkdir dir="${junit.output.dir}"/>
+	<copy todir="${classes-dir}/">
+		<fileset dir="${classes-dir}/capelin-tx">
+			<include name="*.xml" />
+		</fileset>
+	</copy>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.capeline.transaction.DbAllTest" todir="${junit.output.dir}"/>
+            <test name="test.capeline.transaction.RAMDBTest" todir="${junit.output.dir}"/>
+            <test name="test.capeline.transaction.DbTest" todir="${junit.output.dir}"/>
+            <classpath refid="capelin-test.classpath"/>
+        </junit>
+    </target>	
+
+    <target name="mvc" depends="build" description="Test capelin-mvc">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+	<!--
+            <test name="test.capeline.mvc.DbTest" todir="${junit.output.dir}"/>
+	-->
+            <test name="test.capeline.mvc.WebTest" todir="${junit.output.dir}"/>
+            <classpath refid="capelin-test.classpath"/>
+        </junit>
+    </target>	
+    <target name="all" depends="tx,mvc" description="Test all"/>
+</project>
+

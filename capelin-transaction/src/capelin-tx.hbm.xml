@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+            <!DOCTYPE hibernate-mapping PUBLIC
+                "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="sample.capelin.transaction.SampleTxRecord" table="capelin_sample" lazy="false">
+		<id name="id" column="id">
+			<generator class="native" />
+		</id>
+
+		<property name="documentType" />
+		<property name="isbn" />
+		<property name="issn" />
+		<property name="author" />
+		<property name="title" />
+		<property name="subject" />
+		
+	</class>
+</hibernate-mapping>

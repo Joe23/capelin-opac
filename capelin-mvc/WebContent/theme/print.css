@@ -1,0 +1,64 @@
+/** 
+ * Capelin-OPAC
+ * https://github.com/Joe23/capelin-opac
+ * License: GNU AGPL 
+ *
+ * @author Jing Xiao <jing.xiao.ca at gmail dot com>
+ */
+
+ 
+html {
+	height: 100%;
+}
+
+body {
+	font-family: verdana, arial, sans-serif;
+	padding: 0px;
+	margin: 0px;
+	font-size: .68em;
+	text-align: center;
+}
+
+#capelin-page,#capelin-header,#capelin-content,#capelin-footer{
+	width: 1003px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#capelin-header-col1{
+	float: left;
+	width: 168px;
+}
+
+#capelin-header-col2{
+	float: right;
+	width: 834px;
+}
+#capelin-logotext {
+	font-size: 3em;
+	font-weight: bold;
+	font-variant: small-caps;
+	padding: 10px;
+}
+#capelin-titletext {
+	font-size: 2.5em;
+	font-weight: bold;
+	padding: 14px;
+}
+span.color-medium{
+	color: #999;
+}
+table{
+	text-align: left;
+}
+table.capelin-data-view{
+		width: 1000px;
+}
+table.capelin-data-view th{
+	text-align: right;
+	padding: 0px 10px 0px 0px ;
+	width: 200px;
+}
+table.capelin-data-view th,table.capelin-data-view td{
+	border-bottom: dotted 1px #CCCCCC;
+}

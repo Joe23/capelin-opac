@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+
+	<bean id="luceneBuilder" class="org.capelin.mvc.utils.LuceneBuilder" />
+	
+	<bean id="sessionCacheUtil" class="org.capelin.mvc.utils.SessionCacheUtil" />
+	
+	<bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>				
+				/sample.cat=catalogController
+            </value>
+		</property>
+	</bean>
+	
+	<bean id="catalogController"
+		class="sample.capelin.mvc.samplecatalog.SampleRecordController">
+	    <property name="methodNameResolver">
+    	    <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+    	    	<property name="paramName" value="do" />     	    
+        	</bean>
+    	</property>
+		<property name="dao">
+			<ref bean="sampleDao" />
+		</property>
+		<property name="luceneBuilder">
+			<ref bean="luceneBuilder" />
+		</property>
+		<property name="jspViewPath" value="sample" />
+		<property name="catalogViewURI" value="sample.cat?do=" />
+		<!--  mail sender -->
+		<property name="mailSender">
+			<ref bean="mailSender" />
+		</property>
+		<property name="sessionCacheUtil">
+			<ref bean="sessionCacheUtil" />
+		</property>		
+		<property name="projections" value="id,title,subject,author,documentType,jounalTitle,year" />
+
+		
+		<!-- username and password for catalog administrator -->
+		<property name="catalogAdmin">
+			<map>
+				<entry key="capelin" value="opac" />
+			</map>
+		</property>				
+	</bean>
+	
+	<import resource="capelin-spring-ajax.xml" />
+	<import resource="capelin-spring-web.xml" />
+    <import resource="capelin-spring-dao.xml" />
+    <import resource="capelin-spring-mail.xml" />
+</beans>

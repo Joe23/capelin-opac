@@ -1,0 +1,74 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+  version="2.0">
+    
+  <description>JSTL 1.1 functions library</description>
+  <display-name>JSTL functions</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>cp</short-name>
+  <uri>capelin-opac.org</uri>
+  
+  <function>
+    <description>
+      change end of line to semicolon
+    </description>
+    <name>scl</name>
+    <function-class>org.capelin.mvc.utils.TagUtils</function-class>
+    <function-signature>java.lang.String scl(java.lang.String)</function-signature>
+  </function>
+  
+  <function>
+    <description>
+      display only first element
+    </description>
+    <name>unique</name>
+    <function-class>org.capelin.mvc.utils.TagUtils</function-class>
+    <function-signature>java.lang.String unique(java.lang.String)</function-signature>
+  </function>  
+  
+  <function>
+    <description>
+      change end of line to &lt; br &gt;
+    </description>
+    <name>br</name>
+    <function-class>org.capelin.mvc.utils.TagUtils</function-class>
+    <function-signature>java.lang.String br(java.lang.String)</function-signature>
+  </function>
+  
+  <function>
+    <description>
+      convert to list 
+    </description>
+    <name>itemsToList</name>
+    <function-class>org.capelin.mvc.utils.TagUtils</function-class>
+    <function-signature>java.util.List itemsToList(java.lang.String)</function-signature>
+  </function>
+    
+  <function>
+    <description>
+      format url display
+    </description>
+    <name>url</name>
+    <function-class>org.capelin.mvc.utils.TagUtils</function-class>
+    <function-signature>java.lang.String url(java.lang.String)</function-signature>
+  </function>   
+  
+  <function>
+    <description>
+      add + for terms 
+    </description>
+    <name>clink</name>
+    <function-class>org.capelin.mvc.utils.TagUtils</function-class>
+    <function-signature>java.lang.String clink(java.lang.String)</function-signature>
+  </function>
+  
+  <function>
+    <description>
+      encode some HTML
+    </description>
+    <name>encode</name>
+    <function-class>org.capelin.mvc.utils.TagUtils</function-class>
+    <function-signature>java.lang.String encode(java.lang.String)</function-signature>
+  </function>  
+</taglib>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Default Main Template -->
+	<definition name=".mainTemplate" template="/WEB-INF/templates/capelin-def-web.jsp">
+		<put-attribute name="title" value="Welcome to Capelin OPAC" type="string" />
+		<put-attribute name="top" value="/WEB-INF/templates/capelin-web-top.jsp" />
+		<put-attribute name="header" value="/WEB-INF/templates/capelin-web-header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/templates/capelin-web-footer.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/templates/capelin-web-menu.jsp" />
+		<put-attribute name="content" value="/WEB-INF/templates/blank.jsp" />
+	</definition>
+
+	<definition name=".sample" extends=".mainTemplate">
+		<put-attribute name="title" value="Sample Capelin Catalog" type="string" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/sample/menu.jsp" />
+	</definition>
+
+	<definition name=".sample.printFolder" template="/WEB-INF/templates/capelin-def-print.jsp">
+		<put-attribute name="title" value="Print Cart" type="string" />
+		<put-attribute name="header" value="/WEB-INF/templates/capelin-web-header.jsp" />		
+		<put-attribute name="footer" value="/WEB-INF/templates/capelin-print-footer.jsp" />
+	</definition>
+	
+	<!--  Ajax -->
+	<definition name=".ajax" template="/WEB-INF/templates/capelin-def-plain.jsp" />	
+</tiles-definitions>

@@ -1,0 +1,294 @@
+/** 
+ * Capelin-OPAC
+ * https://github.com/Joe23/capelin-opac
+ * License: GNU AGPL v3 | http://www.gnu.org/licenses/agpl.html
+ *
+ * @author Jing Xiao <jing.xiao.ca at gmail dot com>
+ */
+
+ 
+html {
+	height: 100%;
+}
+
+body {
+	font-family: verdana, arial, sans-serif;
+	padding: 0px;
+	margin: 0px;
+	font-size: .68em;
+}
+
+p {
+	margin: 0px;
+	padding: 0px 0px 5px 0px;
+	line-height: 1.7em;
+	text-align: justify;
+}
+
+h1 {
+	font-family: arial, sans-serif;
+	font-size: 2em;
+	text-align: center;
+}
+
+h2 {
+	font-family: arial, sans-serif;
+	margin: 0px;
+	/* padding: 0px 0px 4px 0px; */		
+	font-size: 1.7em;
+}
+h3 {
+	font-family: arial, sans-serif;
+	margin: 0px;
+	/* padding: 0px 0px 4px 0px; */		
+	font-size: 1.5em;
+}
+
+img {
+	border: 0px;
+}
+
+a {	
+	outline: none;
+}
+pre{
+	width: 750px;
+	font-size: 1.25em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* unordered list */
+ul {
+	margin: 8px 0px 0px 16px;
+	padding: 0px;
+}
+
+ul li {
+	list-style-type: square;
+	margin: 0px 0px 11px 0px;
+	padding: 0px;
+}
+
+/* ordered list */
+ol {
+	margin: 8px 0px 0px 24px;
+	padding: 0px;
+}
+
+ol li {
+	margin: 0px 0px 11px 0px;
+	padding: 0px;
+}
+
+/* Layout elements */
+#capelin-page {
+	width: 1003px;
+	border-right: solid 1px #999999;
+}
+
+#capelin-page,#capelin-top,#capelin-header,#capelin-content,#capelin-footer{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#capelin-top,#capelin-header,#capelin-content,#capelin-footer {
+	width: 1003px;
+	display: block;
+	clear: left;
+}
+
+#capelin-top-col1,#capelin-header-col1,#capelin-content-col1 {
+	float: left;
+	width: 168px;
+}
+
+#capelin-top-col2,#capelin-header-col2,#capelin-content-col2 {
+	float: right;
+	width: 834px;
+}
+
+#capelin-top {
+	
+}
+
+#capelin-top-col1 {
+	text-align: center;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-top: 3px;
+	padding: 3px 0px 3px 0px;
+}
+
+#capelin-top-col2 {
+	/*
+	border-left: solid 1px #999999;
+	border-right: solid 1px #999999;
+	border-bottom: solid 1px #999999;
+	border-top: dotted 1px #CCCCCC;
+	*/
+}
+#capelin-top-menu {
+	text-align: right;
+	padding: 3px 0px 3px 0px;
+}
+#capelin-top-menu a {
+	font-weight: bold;
+}
+
+#capelin-header {
+	font-family: Tahoma, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#capelin-header-col1 {
+	border-top: dotted 1px #CCCCCC;
+	border-left: solid 1px #999999;	
+}
+
+#capelin-logotext {
+	font-size: 3em;
+	font-weight: bold;
+	font-variant: small-caps;
+	padding: 10px;
+}
+
+#capelin-titletext {
+	font-size: 2.5em;
+	font-weight: bold;
+	padding: 14px;
+}
+
+#capelin-content-menu a {
+	float: left;
+	width: 160px;
+	height: 20px;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	padding-top: 5px;
+	border-bottom: solid 1px #FFFFFF;
+}
+
+#caplin-content-menu-top,#caplin-content-menu-bottom {
+	height: 0px;
+}
+#capelin-content{
+	border-top: dotted 1px #CCCCCC;	
+}
+#capelin-content-main {
+	float:left;
+	width: 814px;
+	padding: 0px 10px 10px 10px;
+	min-height:450px;
+}
+
+#capelin-footer {
+	clear: both;
+	display: block;
+}
+#capelin-footer-menu {
+	text-align: center;
+	padding: 3px 0px 3px 0px;
+}
+#capelin-footer-menu a {
+	font-weight: bold;
+}
+
+div.capelin-block {
+	margin: 5px 0px 5px 0px;
+	padding: 5px 10px 5px 10px;
+	font-size: 1em;
+	background-color: #eee;
+	border-left: dotted 1px #CCCCCC;
+	border-right: dotted 1px #CCCCCC;
+	border-bottom: dotted 1px #CCCCCC;
+	border-top: dotted 1px #CCCCCC;
+}
+
+div.capelin-block h1{
+	font-size: 1.25em;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: left;	
+}
+div.row{
+	clear: left;
+	padding: 5px;
+}
+
+/* From elements */
+div.capelin-simple-form, div.capelin-advanced-form{
+	text-align: center;
+	width: 800px;
+	padding: 2px 3px 2px 3px;
+}
+div.capelin-simple-form select, div.capelin-simple-form input{
+	margin-right: 10px;
+}
+div.capelin-simple-form label,div.capelin-advanced-form label,div.capelin-block label{
+	font-weight: bold;
+}
+div.capelin-advanced-form label{
+	float: left;
+	margin-left: 80px;
+	margin-right: 30px;
+	position: relative; 
+	text-align: right;
+	width: 150px;
+	font-size: 1.0em;
+}
+
+div.capelin-advanced-form input, div.capelin-advanced-form select,div.capelin-advanced-form textarea{
+	float: left;
+	margin-right: 10px;	
+}
+
+table.capelin-folder-view, table.capelin-data-view{
+	clear: left;
+	width: 800px;
+	text-align: left;
+}
+table.capelin-folder-view th{
+	font-size: 1.25em;
+	/*text-align: center;*/
+}
+table.capelin-data-view th{
+	text-align: right;
+	width: 25%;
+	/* vertical-align: text-top; */
+	padding: 0px 10px 0px 0px ;
+}
+table.capelin-data-view th,table.capelin-data-view td{
+	border-bottom: dotted 1px #CCCCCC;
+}
+
+table.capelin-data-view tr{
+	padding: 0px 0px 10px 0px ;	
+}
+
+table.menus a{
+	font-weight: bold;
+	padding: 20px;
+}
+.left {
+	float: left;
+	padding: 0px 8px 0px 0px;
+}
+
+.right {
+	float: right;
+	padding: 0px 0px 0px 8px;
+}
+
+.center {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+}
+.title {
+	font-family: sans-serif;
+	font-size: 12px;
+}

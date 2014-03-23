@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+            <!DOCTYPE hibernate-mapping PUBLIC
+                "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="sample.capelin.mvc.samplecatalog.SampleMVCRecord"
+		table="capelin_sample" lazy="false">
+		<id name="id" column="id">
+			<generator class="increment"/>
+		</id>
+		<property name="author" length="256" />
+		<property name="authorAdd" length="170" />
+		<property name="authorMain" length="79" />		
+		<property name="documentType" length="15" />
+		<property name="edition" length="8" />
+		<property name="isbn" length="80" />
+		<property name="issn" length="50" />
+		<property name="journalAbbrev" length="50" />
+		<property name="journalTitle" length="200" />
+		<property name="language" length="8" />
+		<property name="notes" length="256" />
+		<property name="number" length="30" />
+		<property name="originalNumber" length="5" />
+		<property name="pages" length="30" />
+		<property name="place" length="40" />
+		<property name="publicationDate" length="20" />
+		<property name="publicationInfo" length="256" />
+		<property name="publisher" length="150" />
+		<property name="series" length="140" />
+		<property name="subject" length="256" />
+		<property name="title" length="256" />
+		<property name="titleMain" length="180" />
+		<property name="titleOther" length="140" />
+		<property name="url" length="256" />
+		<property name="volume" length="15" />
+		<property name="year" length="5" />
+	</class>	
+</hibernate-mapping>

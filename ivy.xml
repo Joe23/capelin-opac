@@ -1,0 +1,68 @@
+<!--
+ * Use ivy to grab all dependencies.
+ * Author: Jing Xiao <jing.xiao.ca (at) gmail.com>
+-->
+<ivy-module version="2.2">
+    <info organisation="org.capelin" module="all"/>
+    	<dependencies>
+		<dependency org="org.hibernate" name="hibernate-search" rev="3.3.0.Final">
+		  <exclude org="javax.annotation"/>
+		  <exclude org="jgroups"/>
+		  <exclude org="javax.jms"/>		  
+		</dependency>
+		<dependency org="org.springframework" name="spring-webmvc" rev="3.0.3.RELEASE">
+			<exclude org="axis"/>
+			<exclude org="com.caucho"/>		
+			<exclude org="javax.el"/>
+			<exclude org="javax.activation"/>
+			<exclude org="javax.validation"/>
+			<exclude org="javax.jms"/>
+			<exclude org="javax.xml.bind"/>			
+			<exclude org="aopalliance"/>			
+			<exclude org="org.codehaus.jackson"/>
+			<exclude org="apache-taglibs"/>	
+			<exclude org="com.sun.jdmk"/>
+			<exclude org="com.sun.jmx"/>
+			<exclude org="jfree"/>
+			<exclude org="org.hibernate" name="hibernate"/>
+			<exclude org="org.springframework" name="spring-webmvc-portlet"/>		
+			<exclude org="velocity"/>	
+			<exclude org="net.sourceforge.jexcelapi"/>	
+			<exclude org="org.slf4j" name="slf4j-jdk14" />
+		</dependency>
+		
+		<dependency org="org.springframework" name="spring-test" rev="3.0.3.RELEASE">
+			<exclude org="org.apache.geronimo.specs"/>
+			<exclude org="org.aspectj"/>
+			<exclude org="org.springframework" name="spring-orm.jar"/>
+			<exclude org="org.springframework" name="spring-context-support"/>
+			<exclude org="org.testng"/>
+			<exclude org="org.slf4j" name="slf4j-jdk14" />
+		</dependency>
+		<dependency org="org.directwebremoting" name="dwr" rev="2.0.10">
+			<exclude org="org.springframework"/>
+			<exclude org="hibernate"/>
+			<exclude org="org.hibernate"/>
+			<exclude org="com.google.code.guice"/>
+			<exclude org="opensymphony"/>
+			<exclude org="struts"/>
+			<exclude org="jsp-api"/>
+			<exclude org="backport-util-concurrent"/>
+			<exclude org="xom"/>
+			<exclude org="org.mortbay.jetty"/>
+			<exclude org="org.apache.myfaces.core"/>
+			<exclude org="javax.servlet"/>			
+		</dependency>		
+		
+        <dependency org="servletapi" name="servletapi" rev="2.4"/>
+        <dependency org="net.sf.opencsv" name="opencsv" rev="2.3"/>
+	<dependency org="org.slf4j" name="slf4j-jdk14" rev="1.6.1"/>
+        
+        <dependency org="org.apache.lucene" name="lucene-snowball" rev="3.0.3"/>
+        <dependency org="org.apache.lucene" name="lucene-queries" rev="3.0.3"/>      
+        <dependency org="org.apache.lucene" name="lucene-spellchecker" rev="3.0.3"/>
+        <dependency org="javax.mail" name="mail" rev="1.4.3"/>
+        <dependency org="hsqldb" name="hsqldb" rev="1.7.3.3"/>
+        <dependency org="junit" name="junit" rev="4.0"/>  
+	</dependencies>
+</ivy-module>

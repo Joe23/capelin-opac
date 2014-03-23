@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.directwebremoting.org/schema/spring-dwr
+    http://www.directwebremoting.org/schema/spring-dwr/spring-dwr-2.0.xsd">
+
+	<bean id="sessionCacheUtil" class="org.capelin.mvc.utils.SessionCacheUtil" />
+	
+	<bean class="org.capelin.mvc.controller.CapelinAjax">
+		<property name="DaoMap">
+			<map>
+				<entry key="sample" value-ref="sampleDao" />
+			</map>
+		</property>
+		<property name="sessionCacheUtil">
+			<ref bean="sessionCacheUtil" />
+		</property>
+		<dwr:remote javascript="capelinAjax">
+			<dwr:include method="addOneToFolder" />
+			<dwr:include method="deleteOneFromFolder" />			
+		</dwr:remote>
+	</bean>
+	
+	<dwr:controller id="dwrController" debug="false" />
+	<dwr:configuration />
+	<import resource="capelin-spring-dao.xml" />
+</beans>

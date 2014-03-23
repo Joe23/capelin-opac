@@ -1,0 +1,167 @@
+<!-- 
+ * Use ant to build all applicaiton.
+ * Author: Jing Xiao <jing.xiao.ca (at) gmail.com>
+-->
+<project basedir="." default="build" name="capelin-opac">
+	<property name="version" value="0.4.2.0" />
+	<property name="build-type" value="SNAPSHOT" />
+	<property name="app-name" value="org.capelin-all" />
+
+	<property name="classes-dir" value="../classes" />
+	<property name="dist-dir" value="../dist" />
+	<path id="capelin-ext.libraryclasspath">
+	      <fileset dir="lib">
+	        <include name="*.jar"/>
+	      </fileset>
+		<pathelement location="${classes-dir}/capelin-core" />
+		<pathelement location="${classes-dir}/capelin-tx" />
+	</path>
+
+	<target name="init">
+		<mkdir dir="${classes-dir}/capelin-core" />
+		<mkdir dir="${classes-dir}/capelin-tx" />
+		<mkdir dir="${classes-dir}/capelin-mvc" />
+		<mkdir dir="${dist-dir}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${classes-dir}" />
+		<delete dir="${dist-dir}" />
+		<delete file="lib/${app-name}-with-sample-${version}-${build-type}.jar" />
+	</target>
+
+	<target depends="init" name="build-core">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac destdir="${classes-dir}/capelin-core" debug="true" debuglevel="lines,source">
+			<src path="capelin-core/src/" />
+			<classpath refid="capelin-ext.libraryclasspath" />
+		</javac>
+	</target>
+
+	<target depends="build-core" name="build-tx">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac destdir="${classes-dir}/capelin-tx" debug="true" debuglevel="lines,source">
+			<src path="capelin-transaction/src/" />
+			<classpath refid="capelin-ext.libraryclasspath" />
+		</javac>
+		<copy todir="${classes-dir}/capelin-tx">
+			<fileset dir="capelin-transaction/src/">
+				<include name="*.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target depends="build-tx" name="build-mvc">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac destdir="${classes-dir}/capelin-mvc" debug="true" debuglevel="lines,source">
+			<src path="capelin-mvc/src" />
+			<classpath refid="capelin-ext.libraryclasspath" />
+		</javac>
+	</target>
+
+	<target depends="build-mvc" name="build" />
+
+	<target name="jar-sample" depends="build" description="jar all classes with samples">
+		<jar jarfile="${dist-dir}/${app-name}-with-sample-${version}-${build-type}.jar">
+			<fileset dir="${classes-dir}/capelin-core">
+				<include name="**/*.class" />
+				<exclude name="**/*Test*.class" />
+			</fileset>
+			<fileset dir="${classes-dir}/capelin-tx">
+				<include name="**/*.class" />
+				<exclude name="**/*Test*.class" />
+			</fileset>
+			<!---->
+			<fileset dir="${classes-dir}/capelin-mvc">
+				<include name="**/*.class" />
+				<exclude name="**/*Test*.class" />
+			</fileset>
+
+		</jar>
+	</target>
+
+	<target name="jar-all" depends="clean,build" description="jar all classes">
+		<jar jarfile="${dist-dir}/${app-name}-${version}-${build-type}.jar">
+			<fileset dir="${classes-dir}/capelin-core">
+				<include name="org/**/*.class" />
+			</fileset>
+			<fileset dir="${classes-dir}/capelin-tx">
+				<include name="org/**/*.class" />
+			</fileset>
+			<fileset dir="${classes-dir}/capelin-mvc">
+				<include name="org/**/*.class" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="jars" depends="build" description="jar all classes seperately">
+		<jar jarfile="${dist-dir}/org.capelin-core-${version}-${build-type}.jar">
+			<fileset dir="${classes-dir}/capelin-core">
+				<include name="org/**/*.class" />
+			</fileset>
+		</jar>
+		<jar jarfile="${dist-dir}/org.capelin-tx-${version}-${build-type}.jar">
+			<fileset dir="${classes-dir}/capelin-tx">
+				<include name="org/**/*.class" />
+			</fileset>
+		</jar>
+		<jar jarfile="${dist-dir}/org.capelin-mvc-${version}-${build-type}.jar">
+			<fileset dir="${classes-dir}/capelin-mvc">
+				<include name="org/**/*.class" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="war" depends="jar-sample" description="Release war file for Servlet Container">
+		<copy file="${dist-dir}/${app-name}-with-sample-${version}-${build-type}.jar" todir="lib/" />
+		<war destfile="${dist-dir}/${app-name}-${version}-${build-type}.war" webxml="capelin-mvc/WebContent/WEB-INF/web.xml">
+			<zipfileset dir="capelin-mvc/WebContent/" />
+			<lib dir="lib" defaultexcludes="yes">
+				<include name="commons-beanutils-1.7.0.jar" />
+				<include name="commons-collections-3.2.1.jar" />				
+				<include name="commons-digester-2.1.jar" />
+				<include name="commons-logging-1.1.1.jar" />
+				<include name="dom4j-1.6.1.jar" />
+				<include name="dwr-2.0.10.jar" />
+				<include name="hibernate-3.2.0.ga.jar" />
+				<include name="hibernate-commons-annotations-3.2.0.Final.jar" />
+				<include name="hibernate-core-3.6.0.Final.jar" />
+				<include name="hibernate-jpa-2.0-api-1.0.0.Final.jar" />
+				<include name="hibernate-search-3.3.0.Final.jar" />
+				<include name="hibernate-search-analyzers-3.3.0.Final.jar" />
+				<include name="hsqldb-1.7.3.3.jar" />
+				<include name="mail-1.4.3.jar" />				
+				<include name="jdom-1.0.jar" />
+				<include name="jta-1.1.jar" />
+				<include name="jstl-1.1.2.jar" />				
+				<include name="kaptcha-2.3.2.jar" />
+				<include name="log4j-1.2.15.jar" />
+				<include name="lucene-analyzers-3.0.3.jar" />
+				<include name="lucene-core-3.0.3.jar" />
+				<include name="lucene-queries-3.0.3.jar" />
+				<include name="lucene-snowball-3.0.3.jar" />
+				<include name="lucene-spellchecker-3.0.3.jar" />
+				<include name="spring-aop-3.0.3.RELEASE.jar" />
+				<include name="spring-asm-3.0.3.RELEASE.jar" />
+				<include name="spring-beans-3.0.3.RELEASE.jar" />
+				<include name="spring-context-3.0.3.RELEASE.jar" />
+				<include name="spring-core-3.0.3.RELEASE.jar" />
+				<include name="spring-expression-3.0.3.RELEASE.jar" />
+				<include name="spring-jdbc-3.0.3.RELEASE.jar" />				
+				<include name="spring-orm-3.0.3.RELEASE.jar" />
+				<include name="spring-tx-3.0.3.RELEASE.jar" />
+				<include name="spring-web-3.0.3.RELEASE.jar" />
+				<include name="spring-webmvc-3.0.3.RELEASE.jar" />				
+				<include name="slf4j-api-1.6.1.jar" />
+				<include name="standard-1.1.2.jar" />
+				<include name="tiles-api-2.1.2.jar" />
+				<include name="tiles-core-2.1.2.jar" />
+				<include name="tiles-jsp-2.1.2.jar" />
+				<include name="tiles-servlet-2.1.2.jar" />
+				<include name="${app-name}-with-sample-${version}-${build-type}.jar" />
+			</lib>
+		</war>	
+		<delete file="lib/${app-name}-with-sample-${version}-${build-type}.jar" />
+	</target>
+</project>
+
