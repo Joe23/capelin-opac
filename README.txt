@@ -1,6 +1,6 @@
 Capelin OPAC
 
-Project URL: http://code.google.com/p/capline-opac/
+Project URL: https://github.com/Joe23/capelin-opac
 
 Setup JAVA_HOME and ANT_HOME you should able to type
 > ant -f init.xml
